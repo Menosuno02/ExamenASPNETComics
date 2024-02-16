@@ -27,8 +27,8 @@ namespace ExamenASPNETComics.Controllers
         [HttpPost]
         public IActionResult Create(Comic comic)
         {
-            // this.repo.CreateComic(comic);
-            this.repo.CreateComicProcedure(comic);
+            this.repo.CreateComic(comic);
+            // this.repo.CreateComicProcedure(comic);
             return RedirectToAction("Index");
         }
 
@@ -54,18 +54,23 @@ namespace ExamenASPNETComics.Controllers
             return View(modelo);
         }
 
-        public IActionResult Delete(int id, string nombre)
+        [HttpGet]
+        public IActionResult Delete(int id)
         {
-            ViewData["MENSAJE"] = "¿Seguro que quieres borrar el comic " + nombre + " (con ID " + id + ")?";
-            return View(id);
+            Comic comic = this.repo.FindComic(id);
+            if (comic == null)
+            {
+                ViewData["MENSAJE"] = "Comic no encontrado";
+            }
+            return View(comic);
         }
 
         [HttpPost]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(int? id)
         {
             if (id != -1)
             {
-                this.repo.DeleteComic(id);
+                this.repo.DeleteComic(id.Value);
             }
             return RedirectToAction("Index");
         }
