@@ -1,0 +1,42 @@
+﻿@model ModelBuscador
+
+<h1>Buscador Comics</h1>
+
+<a asp-controller="Comics" asp-action="Index" class="btn btn-primary w-100 my-3">Volver a Index</a>
+
+<form method="post" class="my-3">
+    <div class="row">
+        <div class="col-6">
+            <select name="id" class="form-select">
+                @foreach (Comic comic in Model.Comics)
+                {
+                    <option value="@comic.IdComic">@comic.Nombre</option>
+                }
+            </select>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-info w-100">Buscar comic</button>
+        </div>
+    </div>
+</form>
+
+@if (Model.Mensaje != null)
+{
+    <h2 class="text-danger text-center">@Model.Mensaje</h2>
+}
+
+@if (Model.Comic != null)
+{
+    <div class="row">
+        <div class="col-6">
+            <ul class="list-group">
+                <li class="list-group-item">ID: @Model.Comic.IdComic</li>
+                <li class="list-group-item">Nombre: @Model.Comic.Nombre</li>
+                <li class="list-group-item">Descripción: @Model.Comic.Descripcion</li>
+            </ul>
+        </div>
+        <div class="col-6">
+            <img class="w-100" height="500" src="@Model.Comic.Imagen" />
+        </div>
+    </div>
+}

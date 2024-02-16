@@ -1,0 +1,14 @@
+﻿<h1>Crear comic</h1>
+
+<a asp-controller="Comics" asp-action="Index" class="btn btn-primary w-100 my-3">Volver a Index</a>
+
+<form method="post">
+    <input type="hidden" name="idcomic" value="0" />
+    <label class="form-label mt-3">Nombre</label>
+    <input type="text" class="form-control" name="nombre" />
+    <label class="form-label mt-3">Imagen</label>
+    <input type="text" class="form-control" name="imagen" />
+    <label class="form-label mt-3">Descripcion</label>
+    <input type="text" class="form-control" name="descripcion" />
+    <button class="btn btn-success mt-3 w-100">Crear nuevo comic</button>
+</form>

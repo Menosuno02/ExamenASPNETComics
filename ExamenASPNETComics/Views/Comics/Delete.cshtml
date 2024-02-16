@@ -1,0 +1,15 @@
+﻿@model int
+
+<h1>Borrar comic</h1>
+
+<form method="post">
+    <h3 class="text-danger text-center">@ViewData["MENSAJE"]</h3>
+    <div class="row mt-3">
+        <div class="col-6">
+            <button class="btn btn-danger w-100" name="id" value="@Model">Si, borrar</button>
+        </div>
+        <div class="col-6">
+            <button class="btn btn-secondary w-100" name="id" value="-1">No, cancelar</button>
+        </div>
+    </div>
+</form>
