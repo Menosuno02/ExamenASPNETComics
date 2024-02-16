@@ -28,7 +28,18 @@ namespace ExamenASPNETComics.Controllers
         public IActionResult Create(Comic comic)
         {
             this.repo.CreateComic(comic);
-            // this.repo.CreateComicProcedure(comic);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult CreateProcedure()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult CreateProcedure(Comic comic)
+        {
+            this.repo.CreateComicProcedure(comic);
             return RedirectToAction("Index");
         }
 
